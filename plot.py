@@ -11,7 +11,7 @@ def main():
     hos_df=pd.DataFrame(hos_json)
     print(cases_df.head())
     print(hos_df.head())
-    df=pd.merge(cases_df,hos_df,on='date')
+    df=pd.merge(cases_df,hos_df,how='left',on='date')
     df=df.melt(id_vars=['date'],var_name='Type',value_name='Count')
     scales = alt.selection_interval(bind='scales',encodings=['x'])
     brush = alt.selection(type='interval', encodings=['x'])
