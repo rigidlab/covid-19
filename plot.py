@@ -8,19 +8,12 @@ def main():
     cases_json=requests.get('https://data.sccgov.org/resource/6cnm-gchg.json').json()
     #hos_json=requests.get('https://data.sccgov.org/resource/5xkz-6esm.json').json()
     cases_df=pd.DataFrame(cases_json)
-<<<<<<< HEAD
     #hos_df=pd.DataFrame(hos_json)
     #df=pd.merge(cases_df,hos_df,on='date')
     #df=df.melt(id_vars=['date'],var_name='Type',value_name='Count')
     df=cases_df
     print(df)
-=======
-    hos_df=pd.DataFrame(hos_json)
     print(cases_df.head())
-    print(hos_df.head())
-    df=pd.merge(cases_df,hos_df,how='left',on='date')
-    df=df.melt(id_vars=['date'],var_name='Type',value_name='Count')
->>>>>>> bd66762f5a11334319b4427462b2805e814eb47d
     scales = alt.selection_interval(bind='scales',encodings=['x'])
     brush = alt.selection(type='interval', encodings=['x'])
 
